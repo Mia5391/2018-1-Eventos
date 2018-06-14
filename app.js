@@ -28,9 +28,22 @@ window.onload = () => {   //este código se va a ejecutar si sólo si la página
     userInputBox.addEventListener("input", ()=>{
         updateBoxes();
     });
+
+    const originalTextBox = document.getElementById("userInputBox");
+
+    originalTextBox.addEventListener("mouseover", ()=>{  //Added listener for "mouseover"
+      fillHelpText("helpInfo", "Escribe tu texto a cifrar");
+    });
+
+    originalTextBox.addEventListener("mouseout", ()=>{  //Added listener for "mouseout"
+      fillHelpText("helpInfo", "");
+    });
 };
 
 
+function fillHelpText(element, text){ //Fills an element with a given text
+  document.getElementById(element).innerText = text;
+}
 
 //La función ya está declarada, sólo se invoca
 function cipherFactory(offset = 33) {
